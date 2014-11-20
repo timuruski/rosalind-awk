@@ -1,7 +1,7 @@
 # Tiny test suite.
 
 solve() {
-  echo "$1" | ./solution
+  echo "$@" | ./solution
 }
 
 fail() {
