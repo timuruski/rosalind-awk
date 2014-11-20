@@ -1,4 +1,6 @@
 #! /usr/bin/env awk -f
+
+# This counts the number of nucleotides in DNA sequence.
 BEGIN {
   symbols["A"] = 0
   symbols["C"] = 0
@@ -11,7 +13,6 @@ BEGIN {
   for(i = 1; i <= chars; i++) {
     char = substr($0, i, 1)
     symbols[char]++
-    # printf("%s", char)
   }
 }
 
