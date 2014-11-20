@@ -1,3 +1,9 @@
+# Tiny test suite.
+
+solve() {
+  echo "$1" | ./solution
+}
+
 fail() {
  echo >&2 "Fail: ${1}"
  exit 1
@@ -9,8 +15,4 @@ assert_eql() {
   message="Expected \"${expected}\" to equal \"${actual}\""
 
   [[ $actual == $expected ]] || fail "${message}"
-}
-
-solve() {
-  echo "$1" | ./solution.awk
 }
