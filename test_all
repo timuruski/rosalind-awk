@@ -1,0 +1,14 @@
+#! /bin/bash
+
+set -e
+
+problem_name() {
+  problem=$(dirname $1)
+  problem="${problem#*_}"
+  echo ${problem} | tr "[a-z]" "[A-Z]"
+}
+
+for test_path in $(find . -name test); do
+  problem=$(problem_name "${test_path}")
+  echo -n "${problem}: " && $test_path && echo "Passed"
+done

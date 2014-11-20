@@ -1,0 +1,13 @@
+#! /bin/bash
+
+set -e
+
+script_dir=$(dirname $0)
+source "${script_dir}/../lib/test_helper.sh"
+
+cd $script_dir
+
+example="AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"
+expected="20 12 17 21"
+
+assert_eql "$(solve $example)" "$expected"
