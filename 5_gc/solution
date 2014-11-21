@@ -1,0 +1,43 @@
+#! /usr/bin/env awk -f
+
+# Count number of G and C characters.
+function gc_percent (sequence,   seq_len, char, gc_count) {
+  gc_count = 0
+  seq_len = length(sequence)
+
+  for(i = 1; i <= seq_len; i++) {
+    char = substr(sequence, i, 1)
+    char ~ /[GC]/ && gc_count++
+  }
+
+  percent = (gc_count == 0) ? 0.0 : gc_count / seq_len
+  return percent * 100.0
+}
+
+
+/^>/ {
+  id = substr($1, 2)
+  sequences[id] = ""
+
+  next
+}
+
+# Smash each sequence of DNA together.
+{ sequences[id] = sequences[id] $0 }
+
+END {
+  max_id = ""
+  max_gc = 0.0
+
+  for(id in sequences) {
+    _sequence = sequences[id]
+    gc = gc_percent(_sequence)
+
+    if(gc > max_gc) {
+      max_id = id
+      max_gc = gc
+    }
+  }
+
+  printf("%s\n%0.6f", max_id, max_gc)
+}
