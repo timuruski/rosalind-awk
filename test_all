@@ -2,6 +2,8 @@
 
 set -e
 
+cd "$(dirname $0)"
+
 problem_name() {
   problem=$(dirname $1)
   problem="${problem#*_}"
