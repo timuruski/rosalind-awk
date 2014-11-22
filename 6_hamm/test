@@ -1,0 +1,26 @@
+#! /bin/bash
+
+set -e
+
+cd $(dirname $0)
+source "../lib/test_helper.sh"
+
+solve() {
+  sample="$1
+$2"
+  echo "$sample" | ./solution
+}
+
+seq_a="CCC"
+seq_b="GCC"
+assert_eql "$(solve $seq_a $seq_b)" "1"
+
+seq_a="CCC"
+seq_b="GGG"
+assert_eql "$(solve $seq_a $seq_b)" "3"
+
+seq_a="CCC"
+seq_b="CCC"
+assert_eql "$(solve $seq_a $seq_b)" "0"
+
+assert_eql "$(./solution sample)" "7"
