@@ -1,5 +1,8 @@
 #! /usr/bin/env awk -f
 
+# DISCLAIMER - If you are interested in the Rosalind Project, please solve
+# this problem on your own before reading my solution.
+
 # Count number of G and C characters.
 function gc_percent (sequence,   seq_len, char, gc_count) {
   gc_count = 0

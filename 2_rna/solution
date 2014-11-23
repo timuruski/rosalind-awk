@@ -1,5 +1,8 @@
 #! /usr/bin/env awk -f
 
+# DISCLAIMER - If you are interested in the Rosalind Project, please solve
+# this problem on your own before reading my solution.
+
 # This transcribes DNA into RNA by replacing Ts with Us.
 {
   gsub(/T/, "U", $0)
