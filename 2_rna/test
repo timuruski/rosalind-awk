@@ -2,10 +2,8 @@
 
 set -e
 
-script_dir=$(dirname $0)
-source "${script_dir}/../lib/test_helper.sh"
-
-cd $script_dir
+cd "$(dirname $0)"
+source "../lib/test_helper.sh"
 
 example="GATGGAACTTGACTACGTAAATT"
 expected="GAUGGAACUUGACUACGUAAAUU"
