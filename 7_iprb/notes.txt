@@ -1,0 +1,31 @@
+# Phenotypes
+
+Some notes to test the interaction of the probabilities. These were created with
+Calca - http://calca.io
+
+## Probabilities of dominant expression
+e_kk = 1.00; e_mk = 1.00; e_nk = 1.00
+e_km = 1.00; e_mm = 0.75; e_nm = 0.50
+e_kn = 1.00; e_mn = 0.50; e_nn = 0.00
+
+## Probabilities of population sample
+k = 2; m = 2; n = 2;
+p = k + m + n
+tk = 'AA'; tm = 'Aa'; tn = 'aa'
+
+p_kk = (k/p) * (k-1)/(p-1) => 0.0666666666667
+p_km = (k/p) * (m)/(p-1) => 0.1333333333333
+p_kn = (k/p) * (n)/(p-1) => 0.1333333333333
+
+p_mk = (m/p) * (k)/(p-1) => 0.1333333333333
+p_mm = (m/p) * (m-1)/(p-1) => 0.0666666666667
+p_mn = (m/p) * (n)/(p-1) => 0.1333333333333
+
+p_nk = (n/p) * (k)/(p-1) => 0.1333333333333
+p_nm = (n/p) * (m)/(p-1) => 0.1333333333333
+p_nn = (n/p) * (n-1)/(p-1) => 0.0666666666667
+
+pe = (p_kk * e_kk) + (p_km * e_km) + (p_kn * e_kn) +
+     (p_mk * e_mk) + (p_mm * e_mm) + (p_mn * e_mn) +
+     (p_nk * e_nk) + (p_nm * e_nm) + (p_nn * e_nn)
+      => 0.7833333333333

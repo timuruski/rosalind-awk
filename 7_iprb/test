@@ -1,0 +1,19 @@
+#! /bin/bash
+
+set -e
+
+cd "$(dirname $0)"
+source "../lib/test_helper.sh"
+
+# Check matched pairs.
+assert_eql "$(solve "2 0 0")" "1.00000" "Double dominant homozygous"
+assert_eql "$(solve "0 2 0")" "0.75000" "Double heterozygous"
+assert_eql "$(solve "0 0 2")" "0.00000" "Double recessive homozygous"
+
+# Check mis-matched pairs.
+assert_eql "$(solve "0 1 1")" "0.50000" "Mixed hetero, recessive"
+assert_eql "$(solve "1 0 1")" "1.00000" "Mixed dominant, recessive"
+assert_eql "$(solve "1 1 0")" "1.00000" "Mixed hetero, dominant"
+
+# Check sample data.
+assert_eql "$(solve "2 2 2")" "0.78333"
