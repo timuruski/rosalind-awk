@@ -29,3 +29,20 @@ pe = (p_kk * e_kk) + (p_km * e_km) + (p_kn * e_kn) +
      (p_mk * e_mk) + (p_mm * e_mm) + (p_mn * e_mn) +
      (p_nk * e_nk) + (p_nm * e_nm) + (p_nn * e_nn)
       => 0.7833333333333
+
+## Refactor
+e = [1.00, 1.00, 1.00;
+     1.00, 0.75, 0.50;
+     1.00, 0.50, 0.00]
+
+kmn = [2, 2, 2]
+t = sum(kmn) => 6
+
+f(a,b) =
+  let sa = kmn[a] in
+  let sb = (if a == b then kmn[b] - 1 else kmn[b]) in 
+  (sa / t) * sb / (t - 1) * e[a,b]
+
+f(0,0) == p_kk => true; f(0,1) == p_km => true; f(0,2) == p_kn => true
+f(1,0) == p_mk => true; f(1,1) == p_mm => true; f(1,2) == p_mn => true
+f(2,0) == p_nk => true; f(2,1) == p_nm => true; f(2,2) == p_nn => true
