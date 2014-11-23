@@ -1,0 +1,11 @@
+#! /bin/bash
+
+set -e
+
+cd "$(dirname $0)"
+source "../lib/test_helper.sh"
+
+sample="AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA"
+expected="MAMAPRTEINSTRING"
+
+assert_eql "$(solve $sample)" $expected
